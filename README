@@ -8,7 +8,7 @@
 // Build Android image
 1. cd ../android42
 2. source build/envsetup.sh
-3. lunch 15
+3. lunch 15 （15. sugar_cubieboard2-eng）
 4. extract-bsp
 5. make -j8
 
