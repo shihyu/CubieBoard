@@ -1,0 +1,30 @@
+# Cubeiboard 編譯 kernel
+
+1. ./build.sh -m clean
+
+2. /cubieboard2_android_SDK_v1.03/lichee/linux-3.3/arch/arm/configs/sun7ismp_android_defconfig  // 修改 sun7ismp_android_defconfig
+
+3. ARCH=arm make sun7ismp_android_defconfig
+
+// 產生 .config ,  可以在用 ARCH=arm make menuconfig 要是不是要在加入什麼模組
+
+
+今天用A20的代碼編譯kernel，自己增加了幾個驅動的C文件，和打開了SPI配置的功能，暈死,編譯時候老是出錯，要不是提示找不到SPI函數，要不是提示要手動選擇YES/NO
+
+來配置選項，明明把arch/arm/configs/sun7ismp_android_defconfig複製到.config，make menuconfig後發現根本不是sun7ismp_android_defconfig；把配置直接寫到arch/arm/configs/sun7ismp_android_defconfig中也不行，make之後發現新加的配置不生效，以前A10是沒有這些問題的，了搞了半天發現真的有點不同於A10，正確的配置如下：
+
+make ARCH=arm sun7ismp_android_defconfig //要加上ARCH，否則用X86下面的配置
+
+make ARCH=arm sun7ismp_android_defconfig menuconfig //不能直接make menuconfig,否則前面一步生成的.config還是不起作用
+
+這樣進入圖形界面選擇SPI功能，和自己新增的配置，保存退出，然後把.config 複製到sun7ismp_android_defconfig就可以了
+
+4. ./build.sh -p sun7i_android
+
+
+-------------------------------------------------------------------------------------------------------------------------
+sdk 1.0.3正確編譯 kernel 四個步驟
+1./build.sh -m clean
+2.cubieboard2_android_SDK_v1.03/lichee/linux-3.3/arch/arm/configs/sun7ismp_android_defconfig
+3. ARCH=arm make sun7ismp_android_defconfig  // 產生 .config
+4./build.sh -p sun7i_android
