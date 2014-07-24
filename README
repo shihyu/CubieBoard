@@ -1,3 +1,22 @@
+#CB2 編譯
+
+// Build Linux kernel
+1. ./build.sh -m clean 
+2. cp linux-3.3/arch/arm/configs/cubieboard2_defconfig linux-3.3/arch/arm/configs/sun7ismp_android_defconfig
+3. ./build.sh -p sun7i_android 
+
+// Build Android image
+1. cd ../android42
+2. source build/envsetup.sh
+3. lunch 15
+4. extract-bsp
+5. make -j8
+
+// Pack Final image
+1. pack
+
+
+
 # Cubeiboard 編譯 kernel
 
 1. ./build.sh -m clean
