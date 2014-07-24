@@ -15,6 +15,20 @@
 // Pack Final image
 1. pack
 
+// udev
+1.
+SUBSYSTEM!="usb_device", ACTION!="add", GOTO="objdev_rules_end"
+#USBasp
+ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="efe8", GROUP="test",
+MODE="0666"
+LABEL="objdev_rules_end"
+
+2. sudo service udev restart
+
+// 燒錄
+1. 運行LiveSuit，在image選項中選擇你需要燒寫的固件
+2. 先按住 EEL , 在插上usb , LiveSuit 會彈出一個對話框問你是否格式化
+
 
 
 # Cubeiboard 編譯 kernel
