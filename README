@@ -4,6 +4,7 @@
 1. ./build.sh -m clean 
 2. cp linux-3.3/arch/arm/configs/cubieboard2_defconfig linux-3.3/arch/arm/configs/sun7ismp_android_defconfig
 3. ./build.sh -p sun7i_android 
+    or ARCH=arm make menuconfig 選單新增或刪除
 
 // Build Android image
 1. cd ../android42
