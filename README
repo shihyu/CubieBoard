@@ -5,8 +5,12 @@
 2. cp linux-3.3/arch/arm/configs/cubieboard2_defconfig linux-3.3/arch/arm/configs/sun7ismp_android_defconfig
 3. ./build.sh -p sun7i_android 
     or 
-    cd linux-3.3
-    ARCH=arm make menuconfig 選單新增或刪除
+    如果有需要配置的驅動什麼了，可以進入linux3.3文件夾下
+    輸入
+    make ARCH=arm menuconfig
+    進行配置，完了之後呢，cd  ../  退到上一目錄
+    我使用的命令是
+    ./build.sh -p sun7i_android
 
 // Build Android image
 1. cd ../android42
